@@ -47,7 +47,10 @@ const app = new App(config);
 
 app.setHandler({
     'LAUNCH': function() {
-        this.ask('Where are you flying to?');
+        this.ask(`Welcome to ${VotewithVoice}!` +
+                    ` Before we get started, please tell me what state ` +
+                    ` you're registered to vote in ` +
+                    ` Where are you flying to? `);
     },
     'SearchFlightIntent': function(fromCity, toCity, date, ticketCount) {
         if (!this.alexaSkill().isDialogCompleted()) {
