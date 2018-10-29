@@ -5,11 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "bespoke-tools": "^0.4.6",
-    "jovo-framework": "^1.0.0"
+    "jest": "^23.6.0",
+    "jovo-framework": "^1.4.12"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "bstproxy": "ps aux | grep -v grep | grep 'bst-proxy.js http' || ./inwin bst proxy http 3000",
+    "start": "node index --webhook"
   },
   "repository": {
     "type": "git",
