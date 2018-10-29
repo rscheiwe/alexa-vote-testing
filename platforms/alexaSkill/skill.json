@@ -3,9 +3,9 @@
 		"publishingInformation": {
 			"locales": {
 				"en-US": {
-					"summary": "Sample Short Description",
+					"summary": "Vote with Voice",
 					"examplePhrases": [
-						"Alexa open hello world"
+						"Tell me the contests in <my state>"
 					],
 					"name": "dialoginterface",
 					"description": "Sample Full Description"
