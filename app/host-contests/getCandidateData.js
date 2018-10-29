@@ -7,7 +7,7 @@ import * as https from 'https';
  */
 const CandidateId = "5b521a85273fb8000e9927d4";
 
-export function GetCandidateData(CandidateId: string) {
+function GetCandidateData(CandidateId='') {
 
     return new Promise((resolve, reject) => {
 
@@ -56,3 +56,5 @@ export function GetCandidateData(CandidateId: string) {
 
 }
 GetCandidateData(CandidateId);
+
+module.exports = GetCandidateData
