@@ -4,6 +4,12 @@
 // App Configuration
 // =================================================================================
 
+import { Contests } from './host-contests/classContests';
+
+// SSML abbreviations:
+const brk = n => `<break time="${n}ms"/>`;
+const VotewithVoice = "Vote with Voice";
+
 const {App} = require('jovo-framework');
 
 const config = {
@@ -49,4 +55,5 @@ app.setHandler({
     },
 });
 
+/** 'app' is exported for use as an entrypoint in index: */
 module.exports.app = app;
