@@ -1,7 +1,7 @@
 {
   "interactionModel": {
       "languageModel": {
-				"invocation": "dialog test",
+				"invocation": "vote with voice paul two",
 				"intents": [
 					{
 							"name": "AMAZON.FallbackIntent",
@@ -32,53 +32,38 @@
 							"samples": []
 					},
 					{
-						"name": "SearchFlightIntent",
+						"name": "ContestInStateIntent",
 						"phrases": [
-							"I am flying to {toCity} from {fromCity} on the {date}",
-							"I want to fly to {toCity} on {date}",
-							"Book a flight for {ticketCount} people on the {date} to {toCity}"
+							"who is running for {contest} in {state}",
+							"who's running for {contest} in {state}",
+							"who is the candidate for {contest} in {state}",
+							"who's the candidate for {contest} in {state}",
+							"{contest} in {state}",
+							"{contest} {state}"
 						],
 						"inputs": [
 							{
-								"name": "fromCity",
+								"name": "contest",
 								"type": {
 									"alexa": "AMAZON.US_CITY"
 								},
 								"alexa": {
 									"samples": [
-										"{fromCity}",
-										"from {fromCity}"
+										"{contest}",
+										"to {contest}"
 									]
 								}
 							},
 							{
-								"name": "toCity",
+								"name": "state",
 								"type": {
-									"alexa": "AMAZON.US_CITY"
+									"alexa": "AMAZON.US_STATE"
 								},
 								"alexa": {
 									"samples": [
-										"{toCity}",
-										"to {toCity}"
+										"{state}",
+										"on the {state}"
 									]
-								}
-							},
-							{
-								"name": "date",
-								"type": {
-									"alexa": "AMAZON.DATE"
-								},
-								"alexa": {
-									"samples": [
-										"{date}",
-										"on the {date}"
-									]
-								}
-							},
-							{
-								"name": "ticketCount",
-								"type": {
-									"alexa": "AMAZON.NUMBER"
 								}
 							}
 						]
@@ -89,28 +74,15 @@
 					"interactionModel": {
 						"prompts": [
 							{
-								"id": "Elicit.Slot.1120021987437.905332624800",
-								"variations": [
-									{
-										"type": "PlainText",
-										"value": "Alright, where does your journey start?"
-									},
-									{
-										"type": "PlainText",
-										"value": "Where are you leaving from?"
-									}
-								]
-							},
-							{
 								"id": "Elicit.Slot.1120021987437.1197853466040",
 								"variations": [
 									{
 										"type": "PlainText",
-										"value": "Which city are you flying to?"
+										"value": "Which election do you want to hear about?"
 									},
 									{
 										"type": "PlainText",
-										"value": "Where are you flying to?"
+										"value": "Which electoral contest are you interested in?"
 									}
 								]
 							},
@@ -119,7 +91,7 @@
 								"variations": [
 									{
 										"type": "PlainText",
-										"value": "When are you leaving?"
+										"value": "Where do you live?"
 									}
 								]
 							}
@@ -127,22 +99,13 @@
 						"dialog": {
 							"intents": [
 								{
-									"name": "SearchFlightIntent",
+									"name": "ContestInStateIntent",
 									"confirmationRequired": false,
 									"prompts": {},
 									"slots": [
 										{
-											"name": "fromCity",
-											"type": "AMAZON.US_CITY",
-											"confirmationRequired": false,
-											"elicitationRequired": true,
-											"prompts": {
-												"elicitation": "Elicit.Slot.1120021987437.905332624800"
-											}
-										},
-										{
-											"name": "toCity",
-											"type": "AMAZON.US_CITY",
+											"name": "contest",
+											"type": "AMAZON.TVSeries",
 											"confirmationRequired": false,
 											"elicitationRequired": true,
 											"prompts": {
@@ -150,20 +113,13 @@
 											}
 										},
 										{
-											"name": "date",
-											"type": "AMAZON.DATE",
+											"name": "state",
+											"type": "AMAZON.US_STATE",
 											"confirmationRequired": false,
 											"elicitationRequired": true,
 											"prompts": {
 												"elicitation": "Elicit.Slot.1120021987437.498905510534"
 											}
-										},
-										{
-											"name": "ticketCount",
-											"type": "AMAZON.NUMBER",
-											"confirmationRequired": false,
-											"elicitationRequired": false,
-											"prompts": {}
 										}
 									]
 								}
