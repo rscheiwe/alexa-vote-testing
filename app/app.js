@@ -4,7 +4,7 @@
 // App Configuration
 // =================================================================================
 
-import { Contests } from './host-contests/classContests';
+const {Contests} = require('./host-contests/classContests');
 
 // SSML abbreviations:
 const brk = n => `<break time="${n}ms"/>`;

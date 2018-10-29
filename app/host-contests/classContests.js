@@ -3,15 +3,12 @@
  * Class created from Contests Data:
  * (The constructor pulls the data from jovo session attributes)
  */
-export class Contests {
+class Contests {
 
-    // There should really be a 'Contest' class too, but I'm in a rush...
+    // Contests.data = {}
 
-    private data: any;
-
-    constructor(
-        private jovo
-    ) {
+    constructor() {
+        this.jovo = jovo
         const ContestsData = jovo.getSessionAttribute('ContestsData');
         //console.log(`Contests.constructor():Got ContestsData:`, ContestsData);
         if (ContestsData) {
@@ -25,19 +22,19 @@ export class Contests {
         }
     }
 
-    public getContests() {
+    getContests() {
         return this.data.Contests;
     }
 
-    public getNumberOf() {
+    getNumberOf() {
         return this.data.Contests.length;
     }
 
-    public getTitles() {
+    getTitles() {
         return this.data.Contests.map(c => c.title);
     }
 
-    public getTitlesPrompt(startIndex: number, maxOf: number) {
+    getTitlesPrompt(startIndex=0, maxOf=0) {
         if (startIndex > this.data.Contests.length)
             return '';
 
@@ -59,7 +56,7 @@ export class Contests {
         return prompt;
     }
 
-    public findContestIndex(NameSaid: string) {
+    findContestIndex(NameSaid='') {
         try {
             return this.data.Contests.findIndex(c => c.title.toLowerCase() === NameSaid.toLowerCase());
         } catch (err) {
@@ -68,7 +65,7 @@ export class Contests {
         }
     }
 
-    public findContest(NameSaid: string) {
+    findContest(NameSaid='') {
         const index = this.findContestIndex(NameSaid);
         if (index >= 0) {
             return this.data.Contests[index];
@@ -77,14 +74,14 @@ export class Contests {
         }
     }
 
-    public findCandidateIndex(ContestName: string, NameSaid: string) {
+    findCandidateIndex(ContestName='', NameSaid='') {
         const contest = this.findContest(ContestName);
 
         return contest.candidates.findIndex(c => c.title.toLowerCase() === NameSaid.toLowerCase());
     }
 
 
-    public findCandidate(ContestName: string, NameSaid: string) {
+    findCandidate(ContestName='', NameSaid='') {
 
         const contest = this.findContest(ContestName);
 
@@ -109,3 +106,5 @@ export class Contests {
     }
 
 }
+
+module.exports = Contests
