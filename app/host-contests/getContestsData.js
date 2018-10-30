@@ -7,13 +7,13 @@ let parameters = { NameOfState: "california" };
 // function fail(e) { console.error("ERROR:", e) }
 // #########################################################
 
-import * as https from 'https';
+const https = require('https');
 
 const access_token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTk1NjEwMzgsImp0aSI6IkFsZXhhIiwiaXNzIjoiQXBpIiwic3ViIjoiNTZiZDA3YWNjZDEwZmUwMDIzMDAwMDAxIiwicm9sZXMiOnsiYWRtaW5pc3RyYXRvciI6ZmFsc2V9fQ.fpC-9DKhlrww5k_ayhxzHt8KlD7UZvLqMTTa-C4B4af4Xotq2zB7izo0Okmk3NDdnvvVDq0bMwV2s1KoIcwVSQ';
 
 
 // Pullstring services seems to need a function/closure to support forward referencing. Not sure why...
-export function getContestsData(NameOfState) {
+function getContestsData(NameOfState) {
 
     return new Promise((resolve, reject) => {
 
@@ -338,7 +338,7 @@ const stateGeoLocs = {
 
 // Run the function/closure defined above:
 getContestsData(parameters.NameOfState);
-
+module.exports = { getContestsData, stateGeoLocs }
 // Use this to dump data for all States:
 // Uncomment relevant 'console.log' calls above to get what you want:
 // for (var stateName in stateGeoLocs) {
